@@ -64,9 +64,11 @@ class FanController
         
         try {            
             
-            $return = $this->createNewFan($req->all());
+            $return = $this->rep->createNewFan($req->all());
             
-        } catch (\Exception $ex) {}
+        } catch (\Exception $ex) {
+            throw $ex;
+        }
         
         return view('concluded-operation', [
             "return" => $return

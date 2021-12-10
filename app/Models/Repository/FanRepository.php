@@ -9,7 +9,7 @@ class FanRepository
     public function createNewFan(array $data)
     {
         $fan = new Fan();
-        $fan->fill(data);
+        $fan->fill($data);
         return $fan->save();
     }
     public function editFan(int $userId, array $fields)
