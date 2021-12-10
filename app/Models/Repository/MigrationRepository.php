@@ -1,5 +1,7 @@
 <?php
-namespace App\Models;
+namespace App\Models\Repository;
+
+use App\Models\Migration\IMigration;
 
 class MigrationRepository
 {
@@ -7,6 +9,7 @@ class MigrationRepository
     {
         $fans = $service->getFansFromMedia();
         
+        //maybe a bulk update would be faster
         foreach($fans as $fan)
         {
             $fan->save();

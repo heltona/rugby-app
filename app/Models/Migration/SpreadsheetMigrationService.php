@@ -1,5 +1,5 @@
 <?php
-namespace App\Models;
+namespace App\Models\Migration;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Collection;
@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Collection;
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx as XlsxReader;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use \PhpOffice\PhpSpreadsheet\Writer\Xlsx as XlsxWriter;
+use App\Models\Fan;
 
 class SpreadsheetMigrationService implements IMigration
 {

@@ -2,10 +2,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\MigrationRepository;
-use App\Models\SpreadsheetMigrationService;
-use App\Models\XmlMigrationService;
+
+
 use Exception;
+use App\Models\Migration\SpreadsheetMigrationService;
+use App\Models\Migration\XmlMigrationService;
+use App\Models\Repository\MigrationRepository;
+
 
 class MigrationController
 {

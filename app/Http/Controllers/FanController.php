@@ -3,13 +3,21 @@ namespace App\Http\Controllers;
 
 use App\Models\Fan;
 use Illuminate\Http\Request;
+use App\Models\Repository\FanRepository;
 
 class FanController
 {
+    private $rep;
+    
+    public function __construct(FanRepository $rep)
+    {
+        $this->rep = $rep;
+    }
 
     public function getAllFans()
     {
-        $allFans = Fan::get();
+        $allFans = $this->rep->getAllFans();
+        
         return view('all-fans', [
             "fans" => $allFans
         ]);
@@ -17,7 +25,8 @@ class FanController
 
     public function getIncompleteFans()
     {
-        $incompleteFans = Fan::where("email", "")->orWhere("telefone", "")->get();
+        $incompleteFans = $this->rep->getIncompleteFans();
+        
         return view('incomplete-fans', [
             "fans" => $incompleteFans
         ]);
@@ -25,7 +34,7 @@ class FanController
 
     public function getIndividualFan(int $id)
     {
-        $singleFan = Fan::find($id);
+        $singleFan = $this->rep->getIndividualFan($id);
 
         return view('individual-fan', [
             "fan" => $singleFan
@@ -39,8 +48,9 @@ class FanController
         try {
             
             $id = $req->input("id");
-            $fan = Fan::find($id);
-            $return = $fan->update($req->all());
+            
+            $return = $this->rep->editFan($id, $req->all());
+            
         } catch (\Exception $ex) {}
 
         return view('concluded-operation', [
@@ -52,12 +62,9 @@ class FanController
     {
         $return = false;
         
-        try {
+        try {            
             
-            
-            $fan = new Fan();
-            $fan->fill($req->all());
-            $return = $fan->save();
+            $return = $this->createNewFan($req->all());
             
         } catch (\Exception $ex) {}
         

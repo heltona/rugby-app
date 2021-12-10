@@ -1,10 +1,11 @@
 <?php
-namespace App\Models;
+namespace App\Models\Migration;
 
 use Illuminate\Support\Facades\Storage;
 use DOMDocument;
 use Illuminate\Database\Eloquent\Collection;
-use App\Models\XmlNormalizer;
+use App\Models\Migration\Utils\XmlNormalizer;
+use App\Models\Fan;
 
 class XmlMigrationService implements IMigration
 {
@@ -29,7 +30,7 @@ class XmlMigrationService implements IMigration
 
             $fan = new Fan();
 
-            $normalizer = new XmlNormalizer($els->item($i));
+            $normalizer = XmlNormalizer($els->item($i));
             $item = $normalizer->getNormalizedItem();
 
             $fan->nome = $item->getAttribute("nome");
