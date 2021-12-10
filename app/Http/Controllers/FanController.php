@@ -22,28 +22,48 @@ class FanController
             "fans" => $incompleteFans
         ]);
     }
-    
+
     public function getIndividualFan(int $id)
     {
         $singleFan = Fan::find($id);
-        
+
         return view('individual-fan', [
             "fan" => $singleFan
         ]);
     }
-    
+
     public function editFan(Request $req)
     {
-       $id = $req->input("id");
-       $fan = Fan::find($id);
-       $return = $fan->update($req->all());
-       
-       return view('concluded-operation', ["return" => $return]);
-    
+        $return = false;
+
+        try {
+            
+            $id = $req->input("id");
+            $fan = Fan::find($id);
+            $return = $fan->update($req->all());
+        } catch (\Exception $ex) {}
+
+        return view('concluded-operation', [
+            "return" => $return
+        ]);
     }
     
-    
-    
-    
+    public function createNewFan(Request $req)
+    {
+        $return = false;
+        
+        try {
+            
+            
+            $fan = new Fan();
+            $fan->fill($req->all());
+            $return = $fan->save();
+            
+        } catch (\Exception $ex) {}
+        
+        return view('concluded-operation', [
+            "return" => $return
+        ]);
+    }
 }
 

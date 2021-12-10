@@ -6,6 +6,7 @@ use App\Models\Fan;
 use App\Mail\FanMail;
 use Exception;
 
+
 class MailerController
 {
 

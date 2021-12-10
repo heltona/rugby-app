@@ -14,6 +14,17 @@ the incomplete (no phone, no mail) ones here:
     /incomplete-fans
 in this url you will have a link to complete. The link looks like that:
     /individual-fan/{id}
+    
+4. New fans can be created here:
+    /create-new-fan
 
 4. When you want say hello to the fans, just go to this link:
+    /send-email
+just click the button, and the fans you have a little word from you. They will love it!
+
+5. You can build the table with PROJECT_ROOT/db.sql
+
+6. Yes, the interface sucks, there is no logic to check if the fan (through documento) exists already, there could be a rest service so the store migrates the xml all by themselves, but we must understand, I was really not paid for this job.
+
+Now among us, Joanne. This boss of yours is not really a good person. Fire that poor girl and pile up all this work on you lap. Not pretty! No pretty!
     
