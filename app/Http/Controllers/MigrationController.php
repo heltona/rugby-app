@@ -2,39 +2,56 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\XmlService;
-use App\Models\SpreadSheetService;
 use App\Models\MigrationRepository;
+use App\Models\SpreadsheetMigrationService;
+use App\Models\XmlMigrationService;
+use Exception;
 
 class MigrationController
 {
+
     private $rep;
-    
+
     public function __construct(MigrationRepository $repository)
     {
         $this->rep = $repository;
     }
-    
+
     public function migrateXlsx(Request $req)
     {
-        $fileName = $req->file("torcedor")->store("upload");
+        $return = false;
         
-        $this->rep->saveFans(new SpreadSheetService($fileName));
-        
-        //@todo get from orm
-        return view("concluded-operation", ["return" => true]);
-        
+        try {
+
+            $fileName = $req->file("torcedor")->store("upload");
+
+            $this->rep->saveFans(new SpreadsheetMigrationService($fileName));
+            $return = true;
+        } catch (Exception $ex) {}
+
+        // @todo get from orm
+        return view("concluded-operation", [
+            "return" => $return
+        ]);
     }
-    
+
     public function migrateXml(Request $req)
     {
-        $fileName = $req->file("torcedor")->store("upload");        
+        $return = false;
         
-        $this->rep->saveFans(new XmlService($fileName));
+        try {
+            
+            $fileName = $req->file("torcedor")->store("upload");
+            
+            $this->rep->saveFans(new XmlMigrationService($fileName));
+            $return = true;
+        } catch(Exception $ex){}
+         
         
-        //@todo get real result from orm
-        return view("concluded-operation", ["return" => true]);
-        
+        // @todo get real result from orm
+        return view("concluded-operation", [
+            "return" => $return
+        ]);
     }
 }
 

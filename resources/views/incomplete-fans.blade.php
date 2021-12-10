@@ -1,6 +1,10 @@
 <html>
-<head></head>
-<body>
+<head>
+<link href="/css/style.css" rel="stylesheet" />
+
+</head>
+<body id="all-fans" class="incomplete">
+	
 	<table>
 		<thead>
 			<tr>
@@ -20,7 +24,7 @@
 			@foreach($fans as $fan)
 			<tr>
 				<td><a href="/individual-fan/{{ $fan->id }}">{{ $fan->nome }} </a></td>
-				
+
 				<td>{{ $fan->documento }}</td>
 				<td>{{ $fan->endereco }}</td>
 				<td>{{ $fan->bairro }}</td>
@@ -33,6 +37,7 @@
 			@endforeach
 		</tbody>
 	</table>
+	
 
 </body>
 </html>

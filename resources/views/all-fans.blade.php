@@ -1,18 +1,21 @@
 <html>
-<head></head>
-<body>
+<head>
+<link href="/css/style.css" rel="stylesheet" />
+
+</head>
+<body id="all-fans">
 	<table>
 		<thead>
 			<tr>
 				<th>Nome</th>
 				<th>Documento</th>
-				<th>endereço</th>
-				<th>bairro</th>
-				<th>cidade</th>
-				<th>uf</th>
-				<th>telefone</th>
-				<th>email</th>
-				<th>ativo</th>
+				<th>Endereço</th>
+				<th>Bairro</th>
+				<th>Cidade</th>
+				<th>UF</th>
+				<th>Telefone</th>
+				<th>Email</th>
+				<th>Ativo</th>
 
 			</tr>
 		</thead>

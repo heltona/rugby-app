@@ -1,14 +1,19 @@
 <html>
-<head></head>
+<head>
+<link href="/css/style.css" rel="stylesheet" />
+
+</head>
 <body>
-<h1>
-	@if($return)
+<header></header>
+<main>
+	<h1>
+	@if($return) 
 		Operação concluída com successo.
-	@else
-		Infelizmente alguma coisa deu errado.
+	 @else Infelizmente
+		alguma coisa deu errado. 
 	@endif
-</h1>
-	
+	</h1>
+</main>
 
 
 </body>

@@ -1,0 +1,20 @@
+main, header {
+	width: 700px;
+	margin: auto;
+}
+
+header {
+	margin-bottom: 100px;
+}
+
+#all-fans table {
+	font-size: 13px;
+}
+
+form div {
+	margin-bottom: 15px;
+}
+
+#send-email form {
+	text-align: center;
+}
